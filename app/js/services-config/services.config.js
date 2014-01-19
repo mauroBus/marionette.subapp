@@ -2,7 +2,7 @@ define(function() {
   // application mode:
   var mode = 'mock';
 
-  var mocksPath = 'app/mocks';
+  var mocksPath = 'js/mocks';
 
   var services = {
     dev: {
