@@ -66,6 +66,13 @@ module.exports = function (grunt) {
                     '<%= yeoman.app %>/js/**/*.less'
                 ],
                 tasks: ['build-styles']
+            },
+            js: {
+                files: [
+                    '<%= yeoman.app %>/js/**/*.js',
+                    '!<%= yeoman.app %>/js/vendor/**/*.js'
+                ],
+                tasks: ['jshint']
             }
         },
 

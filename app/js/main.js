@@ -13,6 +13,8 @@ require.config({
 
     'marionette': 'vendor/marionette/lib/core/amd/backbone.marionette',
 
+    'marionette.subapp': 'core/marionette.subapp',
+
     'text': 'vendor/requirejs-text/text',
     'jst': 'vendor/require-jst/jst'
   },
@@ -27,17 +29,26 @@ require.config({
     backbone: {
       deps: ['jquery', 'underscore'],
       exports: 'Backbone'
+    },
+    'marionette.subapp': {
+      deps: ['marionette'],
+      exports: 'MarioneteSubApp'
     }
   }
 });
 
 require(
   [
-    'jquery',
+    'require',
+    // Load marionette.subapp and extend "Marionette" object
+    //  before start the application.
+    'marionette.subapp',
     'app'
   ],
-  function($, app) {
+  function(require, MarionetteSubApp, App) {
     'use strict';
+
+    var app = require('app');
 
     app.start();
   }

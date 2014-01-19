@@ -1,16 +1,14 @@
 define(
   [
-    'jquery',
-    'underscore',
-    'core/module',
+    'marionette',
     './controller',
     'jst!./_index.html',
     'components/navbar/index',
     'components/dummy/index'
   ],
-  function($, _, Module, Controller, template, NavBarView, DummyView) {
+  function(Marionette, Controller, template, NavBarView, DummyView) {
 
-  var DashboardModule = Module.extend({
+  var DashboardModule = Marionette.SubApp.extend({
 
     template: template,
     className: 'js-dashboard-module',
@@ -28,7 +26,6 @@ define(
     app: null,
 
     initialize: function(options) {
-      Module.prototype.initialize.call(this);
       this.app = options.app;
     },
 

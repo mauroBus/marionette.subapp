@@ -5,20 +5,28 @@ define(
   ],
   function(_, Marionette) {
 
-  var DashboardModule = Marionette.Layout.extend({
+  Marionette.SubApp = Marionette.Layout.extend({
 
     router: null,
     controller: null,
     subViews: {},
     appRoutes: {},
 
-    initialize: function(app) {
+    constructor: function(options) {
       this.controller = this.getController();
 
       this._initRouter();
 
       this.subViews = this.getSubViews();
+
+      Marionette.Layout.prototype.constructor.call(this, options);
     },
+
+    // placeholder
+    getController: function() {},
+
+    // placeholder
+    getSubViews: function() {},
 
     _initRouter: function() {
       this.router = new Marionette.AppRouter({
@@ -32,8 +40,7 @@ define(
         this[index].show(view);
       }, this);
     }
-
   });
 
-  return DashboardModule;
+  return Marionette.SubApp;
 });
