@@ -2,34 +2,6 @@
 'use strict';
 
 require.config({
-    shim: {
-        underscore: {
-            exports: '_'
-        },
-        backbone: {
-            deps: [
-                'underscore',
-                'jquery'
-            ],
-            exports: 'Backbone'
-        }
-    },
-    paths: {
-        jquery: '../vendor/jquery/jquery',
-        backbone: '../vendor/backbone/backbone',
-        underscore: '../vendor/underscore/underscore'
-    }
-});
-
-require([
-    'backbone'
-], function (Backbone) {
-    Backbone.history.start();
-});
-
-
-
-require.config({
   paths: {
     'jquery': 'vendor/jquery/jquery',
     'underscore': 'vendor/underscore/underscore',
