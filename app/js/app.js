@@ -21,10 +21,7 @@ define(
 
   app.addInitializer(function() {
     // Backbone History initialization
-    Backbone.history.start({
-      pushState: false,
-      root: ''
-    });
+    Backbone.history.start();
   });
 
   return app;

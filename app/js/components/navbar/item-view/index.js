@@ -9,7 +9,16 @@ define(
   var NavBarItemView = Marionette.ItemView.extend({
     template: template,
     tagName: 'li',
-    className: 'js-navbar-item-view'
+    className: 'js-navbar-item-view',
+
+    events: {
+      'click': 'onViewClick'
+    },
+
+    onViewClick: function() {
+      var modelId = this.model.get('Id');
+      this.trigger('navigate', 'item-' + modelId );
+    }
   });
 
   return NavBarItemView;

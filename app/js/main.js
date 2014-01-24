@@ -37,19 +37,18 @@ require.config({
   }
 });
 
+// Loading the marionette.subapp, that extends of "Marionette" object,
+//  before starting the application.
 require(
   [
     'require',
-    // Load marionette.subapp and extend "Marionette" object
-    //  before start the application.
-    'marionette.subapp',
-    'app'
+    'marionette.subapp'
   ],
-  function(require, MarionetteSubApp, App) {
+  function(require, MarionetteSubApp) {
     'use strict';
 
-    var app = require('app');
-
-    app.start();
+    require(['app'], function(App) {
+      App.start();
+    });
   }
 );

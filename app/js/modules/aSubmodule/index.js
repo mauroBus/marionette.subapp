@@ -5,10 +5,10 @@ define(
     'core/module',
     './controller',
     'jst!./_index.html',
-    'components/navbar/index',
+    'components/tabs/index',
     'components/dummy/index'
   ],
-  function($, _, Module, Controller, template, NavBarView, DummyView) {
+  function($, _, Module, Controller, template, TabsView, DummyView) {
 
   var DashboardModule = Module.extend({
 
@@ -16,13 +16,13 @@ define(
     className: 'js-dashboard-module',
 
     regions: {
-      navBar: '[region="nav-bar"]',
-      dummy: '[region="dummy"]'
+      tabsView: '[region="tabs-view"]',
+      footer: '[region="dummy"]'
     },
 
     appRoutes: {
-      'handle-person': 'onHandlePerson',
-      'do-something': 'onDoSomething'
+      '': '',
+      '': ''
     },
 
     initialize: function(app) {
@@ -35,9 +35,26 @@ define(
     },
 
     getSubViews: function() {
+      var tabsView = new TabsView({
+        tabs: [
+          {
+            text: 'who cares',
+            view: new DummyView({msg: 'JA!'})
+          },
+          {
+            text: 'nothing really',
+            view: new DummyView({msg: 'WOW!'})
+          },
+          {
+            text: 'nobady',
+            view: new DummyView({msg: 'BOOM!'})
+          }
+        ]
+      });
+
       return {
-        navBar: new NavBarView(),
-        dummy: new DummyView()
+        tabsView: tabsView,
+        footer: new DummyView()
       };
     },
 

@@ -1,0 +1,8 @@
+<div class="container">
+  <ul class="tabs-header">
+    <% _.each(tabs, function(tab, index) { %>
+      <li class="tab" tabId="<%= index %>"><%= tab.text %></li>
+    <% }); %>
+  </ul>
+  <div region="main"></div>
+</div>

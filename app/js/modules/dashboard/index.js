@@ -4,9 +4,10 @@ define(
     './controller',
     'jst!./_index.html',
     'components/navbar/index',
-    'components/dummy/index'
+    'components/dummy/index',
+    'components/tabs/index',
   ],
-  function(Marionette, Controller, template, NavBarView, DummyView) {
+  function(Marionette, Controller, template, NavBarView, DummyView, TabsView) {
 
   var DashboardModule = Marionette.SubApp.extend({
 
@@ -15,12 +16,37 @@ define(
 
     regions: {
       navBar: '[region="nav-bar"]',
-      dummy: '[region="dummy"]'
+      main: '[region="main"]'
     },
 
+    // It could also be a function 'getSubViews',
+    //  each key of this hash match each region defined above.
+    subViews: {
+      navBar: new NavBarView(),
+      main: new DummyView()
+      // tabs: new TabsView({
+      //   tabs: [
+      //     {
+      //       text: 'who cares',
+      //       view: new DummyView({msg: 'JA!'})
+      //     },
+      //     {
+      //       text: 'nothing really',
+      //       view: new DummyView({msg: 'WOW!'})
+      //     },
+      //     {
+      //       text: 'nobady',
+      //       view: new DummyView({msg: 'BOOM!'})
+      //     }
+      //   ]
+      // })
+    },
+
+    // Each route match with a function handler resident in
+    //  the SubApp's controller.
     appRoutes: {
-      'handle-person': 'onHandlePerson',
-      'do-something': 'onDoSomething'
+      'submodule-1': 'onSubModule1',
+      'submodule-2': 'onSubModule2'
     },
 
     app: null,
@@ -33,18 +59,18 @@ define(
       return new Controller(this);
     },
 
-    getSubViews: function() {
-      return {
-        navBar: new NavBarView(),
-        dummy: new DummyView()
-      };
-    },
+    // getSubViews: function() {
+    //   return {
+    //     navBar: new NavBarView(),
+    //     dummy: new DummyView()
+    //   };
+    // },
 
-    handlePerson: function() {
+    showSubModule1: function() {
       console.log('handling person');
     },
 
-    doSomething: function() {
+    showSubModule2: function() {
       console.log('i dont want to');
     }
 

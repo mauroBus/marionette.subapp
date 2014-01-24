@@ -13,12 +13,12 @@ define(
         this.module = module;
       },
 
-      onHandlePerson: function() {
-        this.module.handlePerson();
+      onSubModule1: function() {
+        this.module.showSubModule1();
       },
 
-      onDoSomething: function() {
-        this.module.doSomething();
+      onSubModule2: function() {
+        this.module.showSubModule2();
       }
     });
 

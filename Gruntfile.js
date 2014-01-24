@@ -1,5 +1,5 @@
 'use strict';
-var LIVERELOAD_PORT = 35729;
+var LIVERELOAD_PORT = 12345;//35729;
 var lrSnippet = require('connect-livereload')({port: LIVERELOAD_PORT});
 var mountFolder = function (connect, dir) {
     return connect.static(require('path').resolve(dir));
@@ -66,14 +66,15 @@ module.exports = function (grunt) {
                     '<%= yeoman.app %>/js/**/*.less'
                 ],
                 tasks: ['build-styles']
-            },
-            js: {
-                files: [
-                    '<%= yeoman.app %>/js/**/*.js',
-                    '!<%= yeoman.app %>/js/vendor/**/*.js'
-                ],
-                tasks: ['jshint']
             }
+            // js: {
+            //     files: [
+            //         '<%= yeoman.app %>/js/**/*.js',
+            //         '<%= yeoman.app %>/js/**/*.html',
+            //         '!<%= yeoman.app %>/js/vendor/**/*.js'
+            //     ],
+            //     tasks: ['jshint']
+            // }
         },
 
         ////

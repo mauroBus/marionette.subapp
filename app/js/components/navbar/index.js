@@ -1,13 +1,11 @@
 define(
   [
-    'jquery',
-    'underscore',
     'marionette',
     'jst!./_index.html',
     'collections/items.collection',
     './item-view/index'
   ],
-  function($, _, Marionette, template, ItemsCollection, NavBarItemView) {
+  function(Marionette, template, ItemsCollection, NavBarItemView) {
 
   var NavBarView = Marionette.CompositeView.extend({
 
@@ -15,15 +13,14 @@ define(
 
     className: 'js-navbar-view',
 
-    collection: null,
-
     itemView: NavBarItemView,
 
     itemViewContainer: 'ul',
 
+    collection: null,
+
     initialize: function(options) {
       this.collection = new ItemsCollection();
-      this.listenTo(this.collection, 'change', this.render, this);
     },
 
     onBeforeRender: function() {

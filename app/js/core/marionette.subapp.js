@@ -17,7 +17,7 @@ define(
 
       this._initRouter();
 
-      this.subViews = this.getSubViews();
+      this.subViews = this.subViews || this.getSubViews();
 
       Marionette.Layout.prototype.constructor.call(this, options);
     },
